@@ -1,6 +1,3 @@
 [build]
-command = "react-router build"
-publish = "build/client"
-
-[dev]
-command = "react-router dev"
+  publish = ".next"
+  command = "npm run build"

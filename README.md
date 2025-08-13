@@ -1,74 +1,41 @@
-# React Router Netlify Template
+# Next.js on Netlify Platform Starter
 
-A modern, production-ready template for building full-stack React applications using React Router,
-deployed to Netlify.
+[Live Demo](https://nextjs-platform-starter.netlify.app/)
 
-## Features
+A modern starter based on Next.js 14 (App Router), Tailwind, and [Netlify Core Primitives](https://docs.netlify.com/core/overview/#develop) (Edge Functions, Image CDN, Blob Store).
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-- 💻 Configured for deployment to Netlify
+In this site, Netlify Core Primitives are used both implictly for running Next.js features (e.g. Route Handlers, image optimization via `next/image`, and more) and also explicitly by the user code.
 
-## Getting Started
+Implicit usage means you're using any Next.js functionality and everything "just works" when deployed - all the plumbing is done for you. Explicit usage is framework-agnostic and typically provides more features than what Next.js exposes.
 
-### Installation
+## Deploying to Netlify
 
-Install the dependencies:
+This site requires [Netlify Next Runtime v5](https://docs.netlify.com/frameworks/next-js/overview/) for full functionality. That version is now being gradually rolled out to all Netlify accounts.
 
-```bash
-npm install
+After deploying via the button below, please visit the **Site Overview** page for your new site to check whether it is already using the v5 runtime. If not, you'll be prompted to opt-in to to v5.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-platform-starter)
+
+## Developing Locally
+
+1. Clone this repository, then run `npm install` in its root directory.
+
+2. For the starter to have full functionality locally (e.g. edge functions, blob store), please ensure you have an up-to-date version of Netlify CLI. Run:
+
+```
+npm install netlify-cli@latest -g
 ```
 
-### Development
+3. Link your local repository to the deployed Netlify site. This will ensure you're using the same runtime version for both local development and your deployed site.
 
-Start the development server with HMR:
-
-```bash
-npm run dev
+```
+netlify link
 ```
 
-Your application will be available at `http://localhost:5173`.
+4. Then, run the Next.js development server via Netlify CLI:
 
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
+```
+netlify dev
 ```
 
-## Previewing a Production build
-
-To preview a production build locally, use the [Netlify CLI](https://cli.netlify.com):
-
-```bash
-npx netlify-cli serve
-```
-
-```bash
-npm run build
-```
-
-## Deployment
-
-This template is preconfigured for deployment to Netlify.
-
-Follow <https://docs.netlify.com/welcome/add-new-site/> to add this project as a site
-in your Netlify account.
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
-## See also
-
-[Guide: how to deploy a React Router 7 site to Netlify](https://developers.netlify.com/guides/how-to-deploy-a-react-router-7-site-to-netlify/)
-
----
-
-Built with ❤️ using React Router.
+If your browser doesn't navigate to the site automatically, visit [localhost:8888](http://localhost:8888).
