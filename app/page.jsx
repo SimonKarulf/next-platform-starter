@@ -10,7 +10,7 @@ export default function Page() {
                 className="mt-16 mb-8 text-5xl font-bold"
                 style={{ color: '#fff', letterSpacing: '2px' }}
             >
-                RestaurantKarulf
+                Restaurant Karulf
             </h1>
         </div>
     );
