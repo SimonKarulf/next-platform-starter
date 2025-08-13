@@ -12,6 +12,18 @@ export default function Page() {
             >
                 Restaurant Karulf
             </h1>
+            <p
+                className="text-lg mb-4"
+                style={{ color: '#fff', maxWidth: '600px', textAlign: 'center' }}
+            >
+                Welcome to Restaurant Karulf, where we serve delicious meals made from the freshest ingredients. Join us for an unforgettable dining experience!
+            </p>
+            <p
+                className="text-lg mb-4"
+                style={{ color: '#fff', maxWidth: '600px', textAlign: 'center' }}
+            >
+                I made this while trying to play a PEAK. What a game!! So much time for code!
+            </p>
         </div>
     );
 }
