@@ -1,0 +1,46 @@
+import { getRecipeBySlug } from "utils/utils";
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
+export default async function RecipePage({ params }) {
+    const { slug } = await params;
+    const recipe = await getRecipeBySlug(slug);
+
+    if (!recipe) {
+        return <div className="py-12 text-center">Opskrift ikke fundet.</div>;
+    }
+
+    const { title, time, servings, category, ingredients, instructions } = recipe.fields;
+
+    return (
+        <div className="bg-gray-50 min-h-screen py-12">
+            <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                <h1 className="text-4xl font-bold text-blue-700 mb-8 text-center">{title}</h1>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <InfoCard icon="⏰" label="Tid" value={time} />
+                    <InfoCard icon="🍽️" label="Portioner" value={servings} />
+                    <InfoCard icon="🥘" label="Type" value={category} />
+                </div>
+                <h2 className="text-2xl font-bold text-blue-700 mb-4 text-center">Ingredienser</h2>
+                <div className="bg-blue-50 rounded-lg p-6 mb-10 text-gray-800">
+                    {ingredients && documentToReactComponents(ingredients)}
+                </div>
+                <h2 className="text-2xl font-bold text-blue-700 mb-4 text-center">Fremgangsmåde</h2>
+                <div className="bg-gray-100 rounded-lg p-6">
+                    <div className="text-gray-800 whitespace-pre-line">
+                        {instructions}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function InfoCard({ icon, label, value }) {
+    return (
+        <div className="flex flex-col items-center bg-blue-50 rounded-lg px-8 py-6 min-h-[120px]">
+            <span className="text-3xl mb-2">{icon}</span>
+            <span className="text-sm text-gray-500">{label}</span>
+            <span className="text-lg font-semibold text-gray-800 mt-1">{value}</span>
+        </div>
+    );
+}
