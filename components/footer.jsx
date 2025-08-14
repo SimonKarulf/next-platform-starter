@@ -5,7 +5,7 @@ export function Footer() {
                 <div>
                     <h2 className="font-bold text-3xl">Restaurant Karulf</h2>
                     <p className="text-base mt-2">
-                        Familien Karulf's samling af madklub restauranter
+                        Familien Karulfs samling af madklub restauranter
                     </p>
                 </div>
                 <div className="mt-6 sm:mt-0 text-sm text-right">
