@@ -1,5 +1,29 @@
 import { getRecipeBySlug } from "utils/utils";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS } from '@contentful/rich-text-types';
+
+const renderOptions = {
+    renderNode: {
+        [BLOCKS.UL_LIST]: (node, children) => (
+            <ul className="list-disc list-inside ml-4 mt-0 mb-4">{children}</ul>
+        ),
+        [BLOCKS.OL_LIST]: (node, children) => (
+            <ol className="list-decimal list-inside ml-4 mt-0 mb-4">{children}</ol>
+        ),
+        [BLOCKS.LIST_ITEM]: (node, children) => (
+            <li className="mb-1">{children}</li>
+        ),
+        [BLOCKS.PARAGRAPH]: (node, children) => (
+            <p className="mb-1">{children}</p>
+        ),
+        [BLOCKS.HEADING_4]: (node, children) => (
+            <div className="font-bold text-gray-900 mt-6 mb-1">{children}</div>
+        ),
+        [BLOCKS.HEADING_5]: (node, children) => (
+            <div className="font-bold text-gray-900 mt-6 mb-1">{children}</div>
+        ),
+    },
+};
 
 export default async function RecipePage({ params }) {
     const { slug } = await params;
@@ -22,13 +46,22 @@ export default async function RecipePage({ params }) {
                 </div>
                 <h2 className="text-2xl font-bold text-blue-700 mb-4 text-center">Ingredienser</h2>
                 <div className="bg-blue-50 rounded-lg p-6 mb-10 text-gray-800">
-                    {ingredients && documentToReactComponents(ingredients)}
+                    {ingredients && documentToReactComponents(ingredients, renderOptions)}
                 </div>
                 <h2 className="text-2xl font-bold text-blue-700 mb-4 text-center">Fremgangsmåde</h2>
-                <div className="bg-gray-100 rounded-lg p-6">
-                    <div className="text-gray-800 whitespace-pre-line">
-                        {instructions}
-                    </div>
+                <div className="mb-10">
+                    {Array.isArray(instructions) && (
+                        <ol className="flex flex-col gap-4">
+                            {instructions.map((step, i) => (
+                                <li key={i} className="flex items-center bg-blue-50 rounded-lg px-6 py-4">
+                                    <span className="flex items-center justify-center bg-blue-400 text-white font-bold rounded-full w-8 h-8 mr-4">
+                                        {i + 1}
+                                    </span>
+                                    <span className="text-gray-800">{step}</span>
+                                </li>
+                            ))}
+                        </ol>
+                    )}
                 </div>
             </div>
         </div>
