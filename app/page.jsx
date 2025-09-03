@@ -9,7 +9,7 @@ export default function Page() {
                     Velkommen til Restaurant Karulf
                 </h1>
                 <h2 className="text-xl text-gray-700 mb-8">
-                    Opskrifter tested i Karulfs madklub
+                    Opskrifter testet i Karulfs madklub
                 </h2>
             </section>
             <section className="w-full max-w-3xl bg-white rounded-xl shadow-md flex flex-col md:flex-row items-center justify-between px-8 py-10 mb-8">
